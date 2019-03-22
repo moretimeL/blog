@@ -26,13 +26,13 @@ function louad(type){
                                     "          <div class=\"layui-fluid\">\n" +
                                     "            <div class=\"layui-row\">\n" +
                                     "              <div class=\"layui-col-xs12 layui-col-sm4 layui-col-md5\">\n" +
-                                    "                <div class=\"img\"><img src=\" " + data.data[i].aCover + "\" alt=\"\"></div>\n" +
+                                    "                <div class=\"img\"><a href=\"todetails?id="+data.data[i].id+"\"><img src=\" " + data.data[i].aCover + "\" alt=\"\"></a></div>\n" +
                                     "              </div>\n" +
                                     "              <div class=\"layui-col-xs12 layui-col-sm8 layui-col-md7\">\n" +
                                     "                <div class=\"item-cont\">\n" +
-                                    "                  <h3>" + data.data[i].aTitle + "<button class=\"layui-btn layui-btn-danger new-icon\">new</button></h3>\n" +
+                                    "                  <h3><a href=\"todetails?id="+data.data[i].id+"\" style=''>" + data.data[i].aTitle + "</a><button class=\"layui-btn layui-btn-danger new-icon\">new</button></h3>\n" +
                                     "                  <h5>" + data.data[i].aType + "</h5>\n" +
-                                    "                  <p>"+ data.data[i].aDec + "</p>\n" +
+                                    "                  <p title='"+data.data[i].aDec+"'>"+ data.data[i].aDec + "</p>\n" +
                                     "                  <a href=\"todetails?id="+data.data[i].id+"\" class=\"go-icon\"></a>\n" +
                                     "                </div>\n" +
                                     "            </div>\n" +

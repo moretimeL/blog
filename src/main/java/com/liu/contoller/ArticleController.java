@@ -87,5 +87,13 @@ public class ArticleController {
         return articleService.selectArticleById((Integer) session.getAttribute("a_id"));
     }
 
+    @GetMapping(value = "selectNext")
+    public Result selectNext(Integer last_id){
+        return articleService.selectNext(last_id);
+    }
 
+    @GetMapping(value = "selectLest")
+    public Result selectLest(Integer next_id){
+        return articleService.selectLest(next_id);
+    }
 }

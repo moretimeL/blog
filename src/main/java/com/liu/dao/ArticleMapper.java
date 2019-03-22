@@ -25,4 +25,12 @@ public interface ArticleMapper {
     int selectSum();
 
     Integer addArticle(Article article);
+
+    Integer selectShowView(Integer a_id);
+
+    Integer updateSW(@Param("a_id")Integer a_id,@Param("newV")Integer newV);
+
+    Integer selectNext(Integer last_id);
+
+    Integer selectLest(Integer next_id);
 }

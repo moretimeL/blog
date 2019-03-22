@@ -25,4 +25,10 @@ public interface ArticleService {
     Result AddArticle(Article article);
 
     Result selectArticleById(Integer id);
+
+    void updataView(Integer a_id);
+
+    Result selectNext(Integer last_id);
+
+    Result selectLest(Integer next_id);
 }

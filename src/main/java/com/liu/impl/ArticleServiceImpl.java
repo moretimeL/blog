@@ -65,5 +65,39 @@ public class ArticleServiceImpl implements ArticleService {
         return result;
     }
 
+    @Override
+    public void updataView(Integer a_id) {
+        Integer oldV = articleMapper.selectShowView(a_id);
+        articleMapper.updateSW(a_id,oldV+1);
+    }
+
+    @Override
+    public Result selectNext(Integer last_id) {
+        Result result = new Result();
+        Integer article = articleMapper.selectNext(last_id);
+        if (article!=null){
+            result.setCode(200);
+            result.setData(article);
+        }else {
+            result.setCode(100);
+            result.setMsg("沒有下一篇了哦!");
+        }
+        return result;
+    }
+
+    @Override
+    public Result selectLest(Integer next_id) {
+        Result result = new Result();
+        Integer article = articleMapper.selectLest(next_id);
+        if (article!=null){
+            result.setCode(200);
+            result.setData(article);
+        }else {
+            result.setCode(100);
+            result.setMsg("这是第一篇了哦!");
+        }
+        return result;
+    }
+
 
 }

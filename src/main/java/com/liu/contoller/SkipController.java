@@ -1,5 +1,7 @@
 package com.liu.contoller;
 
+import com.liu.service.ArticleService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 
@@ -13,6 +15,8 @@ import javax.servlet.http.HttpSession;
  **/
 @Controller
 public class SkipController {
+    @Autowired
+    ArticleService articleService;
     @RequestMapping("/toindex")
     public String toIndex(){ return "index"; }
     @RequestMapping("/toabout")
@@ -23,6 +27,7 @@ public class SkipController {
     @RequestMapping("/todetails")
     public String toDetails(Integer id, HttpSession session){
         session.setAttribute("a_id",id);
+        articleService.updataView(id);
         return "details"; }
     @RequestMapping("/toleacots")
     public String toLeacots(){ return "leacots"; }

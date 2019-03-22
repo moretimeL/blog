@@ -34,6 +34,11 @@
       a_content = #{aContent,jdbcType=LONGVARCHAR}
     where id = #{id,jdbcType=INTEGER}
   </update>
+  <update id="updateSW">
+    update article
+    set a_views = #{newV}
+    where id = #{a_id}
+  </update>
   <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
     select id, a_title, a_dec, a_type, a_cover, a_date, a_views, a_content
     from article
@@ -61,10 +66,31 @@
     select SUM(a_views)
     from article
   </select>
+  <select id="selectShowView" resultType="java.lang.Integer">
+    select a_views from article
+    where id = #{a_id}
+  </select>
+
+  <select id="selectNext" resultType="integer">
+    select id from article
+    where id > #{last_id}
+    limit 1
+  </select>
+
+  <select id="selectLest" resultType="integer">
+    select id from article
+    where #{next_id} > id
+    order by id desc
+    limit 1
+  </select>
+
 
   <insert id="addArticle" parameterType="com.liu.entity.Article">
     insert into article(a_title, a_dec, a_type, a_cover, a_content)
     values (#{aTitle},#{aDec},#{aType},#{aCover},#{aContent})
   </insert>
+
+
+
 
 </mapper>
