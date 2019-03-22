@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>添加</title>
+        <link rel="stylesheet" type="text/css" href="../res/layui/css/layui.css" />
+        <link rel="stylesheet" type="text/css" href="../res/css/index.css" />
+        <script src="../res/layui/layui.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../res/js/util/wangEditor.js" type="text/javascript" charset="utf-8"></script>
+        <style type="text/css">
+            img{
+                width: 30%;
+            }
+        </style>
+    </head>
+    <body>
+
+
+    <fieldset class="layui-elem-field layui-field-title">
+        <h2>写日志</h2>
+    </fieldset>
+
+    <div style="width: 700px;margin: auto">
+        <form class="layui-form">
+            <div class="layui-form-item">
+                文章标题：
+                <div class="layui-inline">
+                    <input type="text" class="layui-input" id="a_title" lay-verify="required"/>
+                </div>
+            <div class="layui-form-item">
+                文章类型：
+                <div class="layui-inline">
+                    <select id="a_type">
+                        <option value="学习总结" selected="">学习总结</option>
+                        <option value="生活笔记">生活笔记</option>
+                        <option value="闲趣小文">闲趣小文</option>
+                    </select>
+                </div>
+            </div>
+            <div class="layui-form-item">
+                文章封面：
+                <div class="layui-inline">
+                    <button type="button" class="layui-btn" id="upload1">上传图片</button>
+                </div>
+            </div>
+            <div class="layui-form-item">
+                文章描述：
+                <div class="layui-inline">
+                    <textarea id="a_dec" lay-verify="required"></textarea>
+                </div>
+            </div>
+            <div class="layui-form-item">
+                <font style="color: #999;">来记录你今天的心情和经历吧！</font>
+            </div>
+            </div>
+            <div id="editor">
+
+            </div>
+                <div class="site-demo-button">
+                    <button class="layui-btn site-demo-layedit" lay-submit lay-filter="sub">我写好了</button>
+                    <button class="layui-btn site-demo-layedit">清空重写</button>
+                </div>
+        </form>
+        <input type="hidden" id="img_url">
+    </div>
+
+
+    <script>
+        layui.use(['layedit','form','upload'], function(){
+            var form = layui.form;
+            var layedit = layui.layedit
+                ,$ = layui.jquery;
+            var upload = layui.upload;
+            var E = window.wangEditor;
+            var editor = new E('#editor')
+            editor.customConfig.uploadImgShowBase64 = true
+            editor.create()
+                    form.on('submit(sub)', function(data){
+                        var a_title = $('#a_title').val();
+                        var a_dec = $('#a_dec').val();
+                        var a_type = $('#a_type option:selected').val();
+                        var a_content = editor.txt.html();
+                        var a_cover = $("#img_url").val();
+                        if(a_cover != null&&a_cover!=''){
+                            if (a_content!=null&&a_content!=''&&a_content!='<p><br></p>'){
+                                $.ajax({
+                                    type:'post',
+                                    url:'/addArticle',
+                                    data:{aTitle:a_title,aDec:a_dec,aType:a_type,aContent:a_content,aCover:a_cover},
+                                    success:function (data) {
+                                        alert(data.msg)
+                                    }
+                                });
+                            }else {
+                                alert('一点东西也不写你也好意思提交？？？？');
+                            }
+
+                        }else {
+                            alert('麻烦再上传一次封面图片啊！亲~~~')
+                        }
+                        return false; //阻止表单跳转。如果需要表单跳转，去掉这段即可。
+                    });
+
+
+
+            upload.render({
+                elem: '#upload1'
+                ,url: '/uploadimg'
+                ,done: function(res, index, upload){
+                    //假设code=0代表上传成功
+                    if(res.code == 0){
+                        $("#img_url").val(res.data.src);
+                    }
+                }
+            });
+
+
+            layedit.set({
+                uploadImage: {
+                    url: '/uploadimg'
+                    ,type: 'post'
+                }
+            });
+
+
+        });
+    </script>
+    </body>
+</html>

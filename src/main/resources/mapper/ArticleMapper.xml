@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.liu.dao.ArticleMapper" >
+  <resultMap id="BaseResultMap" type="com.liu.entity.Article" >
+    <id column="id" property="id" jdbcType="INTEGER" />
+    <result column="a_title" property="aTitle" jdbcType="VARCHAR" />
+    <result column="a_dec" property="aDec" jdbcType="VARCHAR" />
+    <result column="a_type" property="aType" jdbcType="CHAR" />
+    <result column="a_cover" property="aCover" jdbcType="VARCHAR" />
+    <result column="a_date" property="aDate" jdbcType="TIMESTAMP" />
+    <result column="a_views" property="aViews" jdbcType="INTEGER" />
+    <result column="a_content" property="aContent" jdbcType="LONGVARCHAR" />
+  </resultMap>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from article
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.liu.entity.Article" >
+    insert into article (id, a_title, a_dec, 
+      a_type, a_cover, a_date,
+      a_views, a_content)
+    values (#{id,jdbcType=INTEGER}, #{aTitle,jdbcType=VARCHAR}, #{aDec,jdbcType=VARCHAR}, 
+      #{aType,jdbcType=CHAR}, #{aCover,jdbcType=VARCHAR}, #{aDate,jdbcType=TIMESTAMP}, 
+      #{aViews,jdbcType=INTEGER}, #{aContent,jdbcType=LONGVARCHAR})
+  </insert>
+  <update id="updateByPrimaryKey" parameterType="com.liu.entity.Article" >
+    update article
+    set a_title = #{aTitle,jdbcType=VARCHAR},
+      a_dec = #{aDec,jdbcType=VARCHAR},
+      a_type = #{aType,jdbcType=CHAR},
+      a_cover = #{aCover,jdbcType=VARCHAR},
+      a_date = #{aDate,jdbcType=TIMESTAMP},
+      a_views = #{aViews,jdbcType=INTEGER},
+      a_content = #{aContent,jdbcType=LONGVARCHAR}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select id, a_title, a_dec, a_type, a_cover, a_date, a_views, a_content
+    from article
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <select id="selectAll" resultMap="BaseResultMap" >
+    select id, a_title, a_dec, a_type, a_cover, a_date, a_views, a_content
+    from article
+    where a_type = #{type}
+    LIMIT #{curr},#{limit}
+  </select>
+
+  <select id="selectCount"  resultType="integer">
+    select count(*)
+    from article
+    where a_type = #{type}
+  </select>
+
+  <select id="selectAllCount" resultType="integer">
+    select count(*)
+    from article
+  </select>
+  
+  <select id="selectSum" resultType="integer">
+    select SUM(a_views)
+    from article
+  </select>
+
+  <insert id="addArticle" parameterType="com.liu.entity.Article">
+    insert into article(a_title, a_dec, a_type, a_cover, a_content)
+    values (#{aTitle},#{aDec},#{aType},#{aCover},#{aContent})
+  </insert>
+
+</mapper>

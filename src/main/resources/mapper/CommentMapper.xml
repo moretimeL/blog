@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.liu.dao.CommentMapper" >
+  <resultMap id="BaseResultMap" type="com.liu.entity.Comment" >
+    <id column="id" property="id" jdbcType="INTEGER" />
+    <result column="c_ip" property="cIp" jdbcType="VARCHAR" />
+    <result column="c_icon" property="cIcon" jdbcType="VARCHAR" />
+    <result column="c_date" property="cDate" jdbcType="TIMESTAMP" />
+    <result column="d_id" property="dId" jdbcType="INTEGER" />
+    <result column="a_id" property="aId" jdbcType="INTEGER" />
+    <result column="c_type" property="cType" jdbcType="CHAR" />
+    <result column="c_toid" property="cToid" jdbcType="INTEGER" />
+    <result column="c_content" property="cContent" jdbcType="LONGVARCHAR" />
+  </resultMap>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from comment
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.liu.entity.Comment" >
+    insert into comment (id, c_ip, c_icon, 
+      c_date, d_id, a_id, 
+      c_type, c_toid, c_content
+      )
+    values (#{id,jdbcType=INTEGER}, #{cIp,jdbcType=VARCHAR}, #{cIcon,jdbcType=VARCHAR}, 
+      #{cDate,jdbcType=TIMESTAMP}, #{dId,jdbcType=INTEGER}, #{aId,jdbcType=INTEGER}, 
+      #{cType,jdbcType=CHAR}, #{cToid,jdbcType=INTEGER}, #{cContent,jdbcType=LONGVARCHAR}
+      )
+  </insert>
+  <update id="updateByPrimaryKey" parameterType="com.liu.entity.Comment" >
+    update comment
+    set c_ip = #{cIp,jdbcType=VARCHAR},
+      c_icon = #{cIcon,jdbcType=VARCHAR},
+      c_date = #{cDate,jdbcType=TIMESTAMP},
+      d_id = #{dId,jdbcType=INTEGER},
+      a_id = #{aId,jdbcType=INTEGER},
+      c_type = #{cType,jdbcType=CHAR},
+      c_toid = #{cToid,jdbcType=INTEGER},
+      c_content = #{cContent,jdbcType=LONGVARCHAR}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select id, c_ip, c_icon, c_date, d_id, a_id, c_type, c_toid, c_content
+    from comment
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <select id="selectAll" resultMap="BaseResultMap" >
+    select id, c_ip, c_icon, c_date, d_id, a_id, c_type, c_toid, c_content
+    from comment
+  </select>
+</mapper>

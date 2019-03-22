@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.liu.dao.AlbumMapper" >
+  <resultMap id="BaseResultMap" type="com.liu.entity.Album" >
+    <id column="id" property="id" jdbcType="INTEGER" />
+    <result column="al_doc" property="alDoc" jdbcType="VARCHAR" />
+    <result column="al_date" property="alDate" jdbcType="TIMESTAMP" />
+    <result column="al_img" property="alImg" jdbcType="VARCHAR" />
+    <result column="al_place" property="alPlace" jdbcType="VARCHAR" />
+  </resultMap>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from album
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.liu.entity.Album" >
+    insert into album (id, al_doc, al_date, 
+      al_img, al_place)
+    values (#{id,jdbcType=INTEGER}, #{alDoc,jdbcType=VARCHAR}, #{alDate,jdbcType=TIMESTAMP}, 
+      #{alImg,jdbcType=VARCHAR}, #{alPlace,jdbcType=VARCHAR})
+  </insert>
+  <update id="updateByPrimaryKey" parameterType="com.liu.entity.Album" >
+    update album
+    set al_doc = #{alDoc,jdbcType=VARCHAR},
+      al_date = #{alDate,jdbcType=TIMESTAMP},
+      al_img = #{alImg,jdbcType=VARCHAR},
+      al_place = #{alPlace,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select id, al_doc, al_date, al_img, al_place
+    from album
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <select id="selectAll" resultMap="BaseResultMap" >
+    select id, al_doc, al_date, al_img, al_place
+    from album
+  </select>
+</mapper>
