@@ -1,7 +1,7 @@
 /**
  
  @Name: layuiSimpleBlog - 极简博客模板
- @Author: xuzhiwen
+ @Author: liujun
  @Copyright: layui.com
  
  */

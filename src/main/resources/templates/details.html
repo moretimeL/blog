@@ -56,12 +56,12 @@
                   <form class="layui-form" action="">
                     <div class="layui-form-item layui-form-text">
                       <div class="layui-input-block">
-                        <textarea name="desc" placeholder="既然来了，就说几句" class="layui-textarea"></textarea>
+                        <textarea name="desc" id="context" placeholder="既然来了，就说几句" class="layui-textarea"></textarea>
                       </div>
                     </div>
                     <div class="layui-form-item">
                       <div class="layui-input-block" style="text-align: right;">
-                        <button class="layui-btn definite">確定</button>
+                        <button class="layui-btn definite" lay-submit lay-filter="yes">確定</button>
                       </div>
                     </div>
                   </form>
@@ -183,6 +183,20 @@
                     }else {
                         layer.msg(data.msg)
                     }
+                }
+            })
+            return false; //阻止表单跳转。如果需要表单跳转，去掉这段即可。
+        });
+
+        form.on('submit(yes)', function(){
+            var context = $("#context").text();
+            alert(context)
+            $.ajax({
+                type:'post',
+                url:'',
+                data:{'a_id':window.location.href.split('=')[1],'context':context},
+                success:function (data) {
+
                 }
             })
             return false; //阻止表单跳转。如果需要表单跳转，去掉这段即可。
