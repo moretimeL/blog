@@ -1,16 +1,14 @@
 package com.liu.entity;
 
+import lombok.Data;
+
 import java.util.Date;
 
 public class Album {
     private Integer id;
-
     private String alDoc;
-
     private Date alDate;
-
     private String alImg;
-
     private String alPlace;
 
     public Integer getId() {
@@ -51,5 +49,16 @@ public class Album {
 
     public void setAlPlace(String alPlace) {
         this.alPlace = alPlace;
+    }
+
+    @Override
+    public String toString() {
+        return "Album{" +
+                "id=" + id +
+                ", alDoc='" + alDoc + '\'' +
+                ", alDate=" + alDate +
+                ", alImg='" + alImg + '\'' +
+                ", alPlace='" + alPlace + '\'' +
+                '}';
     }
 }

@@ -1,6 +1,7 @@
 package com.liu.impl;
 
 import com.liu.dao.ArticleMapper;
+import com.liu.dao.CommentMapper;
 import com.liu.entity.Article;
 import com.liu.pojo.Limit;
 import com.liu.pojo.Result;
@@ -22,6 +23,8 @@ import java.util.List;
 public class ArticleServiceImpl implements ArticleService {
     @Autowired
     ArticleMapper articleMapper;
+    @Autowired
+    CommentMapper commentMapper;
 
     @Override
     public List<Article> getAll(Integer limit,Integer curr,String type) {
@@ -61,7 +64,7 @@ public class ArticleServiceImpl implements ArticleService {
     public Result selectArticleById(Integer id) {
         Result result = new Result();
         result.setData(articleMapper.selectByPrimaryKey(id));
-
+        result.setCode(commentMapper.selectArtCountById(id));
         return result;
     }
 

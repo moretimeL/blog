@@ -1,24 +1,21 @@
 package com.liu.entity;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+import org.springframework.format.annotation.DateTimeFormat;
+
 import java.util.Date;
 
 public class Comment {
     private Integer id;
-
     private String cIp;
-
     private String cIcon;
-
+    @DateTimeFormat(pattern="yyyy-MM-dd HH:mm:ss")
+    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss",timezone = "Asia/Shanghai")
     private Date cDate;
-
     private Integer dId;
-
     private Integer aId;
-
     private String cType;
-
     private Integer cToid;
-
     private String cContent;
 
     public Integer getId() {
@@ -91,5 +88,20 @@ public class Comment {
 
     public void setcContent(String cContent) {
         this.cContent = cContent;
+    }
+
+    @Override
+    public String toString() {
+        return "Comment{" +
+                "id=" + id +
+                ", cIp='" + cIp + '\'' +
+                ", cIcon='" + cIcon + '\'' +
+                ", cDate=" + cDate +
+                ", dId=" + dId +
+                ", aId=" + aId +
+                ", cType='" + cType + '\'' +
+                ", cToid=" + cToid +
+                ", cContent='" + cContent + '\'' +
+                '}';
     }
 }

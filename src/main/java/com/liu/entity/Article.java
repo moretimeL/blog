@@ -1,27 +1,20 @@
 package com.liu.entity;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
+import lombok.Data;
 import org.springframework.format.annotation.DateTimeFormat;
-
 import java.util.Date;
 
 public class Article {
     private Integer id;
-
     private String aTitle;
-
     private String aDec;
-
     private String aType;
-
     private String aCover;
-
     @DateTimeFormat(pattern="yyyy-MM-dd HH:mm:ss")
     @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss")
     private Date aDate;
-
     private Integer aViews;
-
     private String aContent;
 
     public Integer getId() {

@@ -10,7 +10,7 @@ import javax.servlet.http.HttpServletRequest;
  **/
 
 public class IpUtile {
-    public static String getIp2(HttpServletRequest request) {
+    public static String getIp(HttpServletRequest request) {
         String ip = request.getHeader("X-Forwarded-For");
         if(ip!=null && !"unKnown".equalsIgnoreCase(ip)){
             //多次反向代理后会有多个ip值，第一个ip才是真实ip

@@ -17,13 +17,19 @@
     where id = #{id,jdbcType=INTEGER}
   </delete>
   <insert id="insert" parameterType="com.liu.entity.Comment" >
-    insert into comment (id, c_ip, c_icon, 
-      c_date, d_id, a_id, 
+    insert into comment (id, c_ip, c_icon,
+      c_date, d_id, a_id,
       c_type, c_toid, c_content
       )
     values (#{id,jdbcType=INTEGER}, #{cIp,jdbcType=VARCHAR}, #{cIcon,jdbcType=VARCHAR}, 
       #{cDate,jdbcType=TIMESTAMP}, #{dId,jdbcType=INTEGER}, #{aId,jdbcType=INTEGER}, 
       #{cType,jdbcType=CHAR}, #{cToid,jdbcType=INTEGER}, #{cContent,jdbcType=LONGVARCHAR}
+      )
+  </insert>
+  <insert id="insertToArticle" parameterType="com.liu.entity.Comment">
+    insert into comment ( c_ip, c_icon, a_id,c_type, c_content )
+    values ( #{cIp,jdbcType=VARCHAR}, #{cIcon,jdbcType=VARCHAR}, #{aId,jdbcType=INTEGER},
+      #{cType,jdbcType=CHAR},#{cContent,jdbcType=LONGVARCHAR}
       )
   </insert>
   <update id="updateByPrimaryKey" parameterType="com.liu.entity.Comment" >
@@ -46,5 +52,14 @@
   <select id="selectAll" resultMap="BaseResultMap" >
     select id, c_ip, c_icon, c_date, d_id, a_id, c_type, c_toid, c_content
     from comment
+  </select>
+  <select id="selectArtCountById" resultType="java.lang.Integer">
+    select count(*) from comment where c_type = 2
+    and a_id = #{#id}
+  </select>
+  <select id="selectArcComById" resultMap="BaseResultMap">
+    select * from comment where c_type = 2
+    and a_id = #{a_id}
+    LIMIT #{curr},#{limit}
   </select>
 </mapper>

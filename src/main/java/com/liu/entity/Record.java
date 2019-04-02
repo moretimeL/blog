@@ -1,12 +1,12 @@
 package com.liu.entity;
 
+import lombok.Data;
+
 import java.util.Date;
 
 public class Record {
     private Integer id;
-
     private String rIp;
-
     private Date rDate;
 
     public Integer getId() {
@@ -31,5 +31,14 @@ public class Record {
 
     public void setrDate(Date rDate) {
         this.rDate = rDate;
+    }
+
+    @Override
+    public String toString() {
+        return "Record{" +
+                "id=" + id +
+                ", rIp='" + rIp + '\'' +
+                ", rDate=" + rDate +
+                '}';
     }
 }

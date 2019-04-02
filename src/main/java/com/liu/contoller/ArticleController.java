@@ -3,6 +3,7 @@ package com.liu.contoller;
 import com.liu.entity.Article;
 import com.liu.pojo.Result;
 import com.liu.service.ArticleService;
+import com.liu.utile.IpUtile;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -38,43 +39,8 @@ public class ArticleController {
 
     @GetMapping("getIp")
     public String getIp(HttpServletRequest request){
-        Result result = new Result();
-        String ip = request.getHeader("X-Forwarded-For");
-
-        if (ip == null || ip.length() == 0 || "unknown".equalsIgnoreCase(ip)) {
-            if (ip == null || ip.length() == 0 || "unknown".equalsIgnoreCase(ip)) {
-                ip = request.getHeader("Proxy-Client-IP");
-
-            }
-            if (ip == null || ip.length() == 0 || "unknown".equalsIgnoreCase(ip)) {
-                ip = request.getHeader("WL-Proxy-Client-IP");
-
-            }
-            if (ip == null || ip.length() == 0 || "unknown".equalsIgnoreCase(ip)) {
-                ip = request.getHeader("HTTP_CLIENT_IP");
-
-            }
-            if (ip == null || ip.length() == 0 || "unknown".equalsIgnoreCase(ip)) {
-                ip = request.getHeader("HTTP_X_FORWARDED_FOR");
-
-            }
-            if (ip == null || ip.length() == 0 || "unknown".equalsIgnoreCase(ip)) {
-                ip = request.getRemoteAddr();
-
-            }
-        } else if (ip.length() > 15) {
-            String[] ips = ip.split(",");
-            for (int index = 0; index < ips.length; index++) {
-                String strIp = (String) ips[index];
-                if (!("unknown".equalsIgnoreCase(strIp))) {
-                    ip = strIp;
-                    break;
-                }
-            }
-        }
-        System.out.println(ip);
+        String ip = IpUtile.getIp(request);
         return ip;
-
     }
 
     @PostMapping(value = "addArticle")

@@ -1,26 +1,18 @@
 package com.liu.entity;
 
+import lombok.Data;
+
 public class Me {
     private Integer id;
-
     private String photo;
-
     private String name;
-
     private Integer age;
-
     private String work;
-
     private String like;
-
     private String skill;
-
     private String songer;
-
     private String qq;
-
     private String phone;
-
     private String wechat;
 
     public Integer getId() {
@@ -109,5 +101,22 @@ public class Me {
 
     public void setWechat(String wechat) {
         this.wechat = wechat;
+    }
+
+    @Override
+    public String toString() {
+        return "Me{" +
+                "id=" + id +
+                ", photo='" + photo + '\'' +
+                ", name='" + name + '\'' +
+                ", age=" + age +
+                ", work='" + work + '\'' +
+                ", like='" + like + '\'' +
+                ", skill='" + skill + '\'' +
+                ", songer='" + songer + '\'' +
+                ", qq='" + qq + '\'' +
+                ", phone='" + phone + '\'' +
+                ", wechat='" + wechat + '\'' +
+                '}';
     }
 }

@@ -7,26 +7,28 @@ public class Result {
     private Integer code;
     private String msg;
     private Object data;
-    private List<Object> datas;
+    private List<?> datas;
 
-    public Result(String state, String msg, Object data, List<Object> datas,Integer code) {
-        this.state = state;
-        this.msg = msg;
-        this.data = data;
-        this.datas = datas;
-        this.code = code;
+    @Override
+    public String toString() {
+        return "Result{" +
+                "state='" + state + '\'' +
+                ", code=" + code +
+                ", msg='" + msg + '\'' +
+                ", data=" + data +
+                ", datas=" + datas +
+                '}';
     }
 
     public Result() {
-
     }
 
-    public Integer getCode() {
-        return code;
-    }
-
-    public void setCode(Integer code) {
+    public Result(String state, Integer code, String msg, Object data, List<?> datas) {
+        this.state = state;
         this.code = code;
+        this.msg = msg;
+        this.data = data;
+        this.datas = datas;
     }
 
     public String getState() {
@@ -35,6 +37,14 @@ public class Result {
 
     public void setState(String state) {
         this.state = state;
+    }
+
+    public Integer getCode() {
+        return code;
+    }
+
+    public void setCode(Integer code) {
+        this.code = code;
     }
 
     public String getMsg() {
@@ -53,22 +63,11 @@ public class Result {
         this.data = data;
     }
 
-    public List<Object> getDatas() {
+    public List<?> getDatas() {
         return datas;
     }
 
-    public void setDatas(List<Object> datas) {
+    public void setDatas(List<?> datas) {
         this.datas = datas;
-    }
-
-    @Override
-    public String toString() {
-        return "Result{" +
-                "state='" + state + '\'' +
-                ", code='" + code + '\'' +
-                ", msg='" + msg + '\'' +
-                ", data=" + data +
-                ", datas=" + datas +
-                '}';
     }
 }
