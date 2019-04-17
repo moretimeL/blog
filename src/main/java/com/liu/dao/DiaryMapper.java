@@ -8,11 +8,15 @@ import java.util.List;
 public interface DiaryMapper {
     int deleteByPrimaryKey(Integer id);
 
-    int insert(Diary record);
+    int insertDiary(Diary record);
 
     Diary selectByPrimaryKey(Integer id);
 
-    List<Diary> selectAll();
+    List<Diary> selectAll(Integer page);
+
+    Integer selectCount();
 
     int updateByPrimaryKey(Diary record);
+
+
 }

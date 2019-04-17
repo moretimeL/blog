@@ -36,11 +36,4 @@ public class UserController {
         return userService.uploadimg(file,String.valueOf(System.currentTimeMillis())+".jpg");
     }
 
-    @RequestMapping(value = "test")
-    public List<Diary> test(){
-        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
-        List<Diary> diaries = diaryMapper.selectAll();
-        System.out.println(sdf.format(diaries.get(0).getD_date()));
-        return diaries;
-    }
 }

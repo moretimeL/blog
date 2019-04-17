@@ -88,15 +88,16 @@
                                     url:'/addArticle',
                                     data:{aTitle:a_title,aDec:a_dec,aType:a_type,aContent:a_content,aCover:a_cover},
                                     success:function (data) {
-                                        alert(data.msg)
+                                        layer.msg(data.msg);
+                                        setTimeout('window.location.reload()',1000);
                                     }
                                 });
                             }else {
-                                alert('一点东西也不写你也好意思提交？？？？');
+                                layer.msg("一点东西也不写你也好意思提交？？？？");
                             }
 
                         }else {
-                            alert('麻烦再上传一次封面图片啊！亲~~~')
+                            layer.msg('麻烦再上传一次封面图片啊！亲~~~');
                         }
                         return false; //阻止表单跳转。如果需要表单跳转，去掉这段即可。
                     });
@@ -110,6 +111,10 @@
                     //假设code=0代表上传成功
                     if(res.code == 0){
                         $("#img_url").val(res.data.src);
+                        layer.msg("上传成功！");
+                    }else {
+                        layer.msg("上传失败！");
+
                     }
                 }
             });

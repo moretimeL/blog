@@ -1,6 +1,8 @@
 package com.liu.entity;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import lombok.Data;
+import org.springframework.format.annotation.DateTimeFormat;
 
 import java.util.Date;
 
@@ -9,6 +11,7 @@ public class Diary {
     private String dContent;
     private String dUrl;
     private Integer dLikenum;
+    @JsonFormat(pattern = "HH:mm:ss yyyy/MM/dd",timezone = "GMT+8")
     private Date d_date;
 
     public Integer getId() {

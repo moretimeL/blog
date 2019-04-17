@@ -11,11 +11,25 @@
     delete from diary
     where id = #{id,jdbcType=INTEGER}
   </delete>
-  <insert id="insert" parameterType="com.liu.entity.Diary" >
-    insert into diary (id, d_content, d_url, 
-      d_likenum)
-    values (#{id,jdbcType=INTEGER}, #{dContent,jdbcType=VARCHAR}, #{dUrl,jdbcType=VARCHAR}, 
-      #{dLikenum,jdbcType=INTEGER})
+  <insert id="insertDiary" parameterType="com.liu.entity.Diary" >
+    insert into diary
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="dContent != null and dContent != ''">
+        d_content,
+      </if>
+      <if test="dUrl != null and dUrl != ''">
+        d_url,
+      </if>
+
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="dContent != null and dContent != ''">
+        #{dContent,jdbcType=VARCHAR},
+      </if>
+      <if test="dUrl != null and dUrl != ''">
+        #{dUrl,jdbcType=VARCHAR},
+      </if>
+    </trim>
   </insert>
   <update id="updateByPrimaryKey" parameterType="com.liu.entity.Diary" >
     update diary
@@ -32,5 +46,11 @@
   <select id="selectAll" resultMap="BaseResultMap" >
     select id, d_content, d_url, d_likenum,d_date
     from diary
+    order by d_date desc
+        limit #{page},5
+  </select>
+
+  <select id="selectCount" resultType="integer">
+    select count(*) from diary
   </select>
 </mapper>
