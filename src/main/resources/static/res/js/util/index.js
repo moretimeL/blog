@@ -21,7 +21,7 @@ function louad(type){
                         success:function (datas) {
                             var html = "";
                             var big = $("#big");
-                            for (var i = 0;i<datas.data.length;i++) {
+                            for (var i = datas.data.length-1;i>=0;i--) {
                                 html += "<div class=\"item\">\n" +
                                     "          <div class=\"layui-fluid\">\n" +
                                     "            <div class=\"layui-row\">\n" +

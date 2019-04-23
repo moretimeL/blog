@@ -15,4 +15,6 @@ public interface DiaryService {
 
     Result selectDiary(Integer page);
 
+    Result updateLikeN(String off,Integer num,Integer id);
+
 }

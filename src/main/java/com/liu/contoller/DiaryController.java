@@ -5,6 +5,7 @@ import com.liu.pojo.Result;
 import com.liu.service.DiaryService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -27,4 +28,6 @@ public class DiaryController {
     @PostMapping("selectDiary")
     public Result selectDiary(Integer page){return diaryService.selectDiary(page);}
 
+    @PostMapping("updateLikeN")
+    public Result updateLikeN(String off,Integer num,Integer id){return diaryService.updateLikeN(off,num,id);}
 }

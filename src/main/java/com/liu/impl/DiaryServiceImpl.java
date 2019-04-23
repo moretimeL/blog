@@ -38,4 +38,15 @@ public class DiaryServiceImpl implements DiaryService {
         result.setCode(diaryMapper.selectCount());
         return result;
     }
+
+    @Override
+    public Result updateLikeN(String off, Integer num, Integer id) {
+        Result result = new Result();
+        if (diaryMapper.updateLikeN(off,num,id)==1){
+            result.setCode(200);
+        }else {
+            result.setMsg("出了一点问题！请重试！");
+        }
+        return result;
+    }
 }

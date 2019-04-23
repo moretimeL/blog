@@ -60,6 +60,7 @@
   <select id="selectArcComById" resultMap="BaseResultMap">
     select * from comment where c_type = 2
     and a_id = #{a_id}
+    order by c_date desc
     LIMIT #{curr},#{limit}
   </select>
 </mapper>

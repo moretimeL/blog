@@ -6,233 +6,223 @@
   <title>微语</title>
   <link rel="stylesheet" type="text/css" href="static/res/layui/css/layui.css">
   <link rel="stylesheet" type="text/css" href="static/res/css/main.css">
-<!--加载meta IE兼容文件-->
-<!--[if lt IE 9]>
-<script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
-<script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
-<![endif]-->
+  <!--加载meta IE兼容文件-->
+  <!--[if lt IE 9]>
+  <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+  <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
+  <![endif]-->
 </head>
 <body>
-  <div class="header">
-    <div class="menu-btn">
-      <div class="menu"></div>
-    </div>
-    <h1 class="logo">
-      <a href="toindex">
-        <span>MYBLOG</span>
-        <img src="static/res/img/logo.png">
-      </a>
-    </h1>
-    <div class="nav">
-      <a href="toindex">文章</a>
-      <a href="towhisper"  class="active">微语</a>
-      <a href="toleacots">留言</a>
-      <a href="toalbum">相册</a>
-      <a href="toabout">关于</a>
-    </div>
-    <ul class="layui-nav header-down-nav">
-      <li class="layui-nav-item"><a href="toindex">文章</a></li>
-      <li class="layui-nav-item"><a href="towhisper"  class="active">微语</a></li>
-      <li class="layui-nav-item"><a href="toleacots">留言</a></li>
-      <li class="layui-nav-item"><a href="toalbum">相册</a></li>
-      <li class="layui-nav-item"><a href="toabout">关于</a></li>
-    </ul>
-    <p class="welcome-text">
-      欢迎来到<span class="name">smile liu</span>的私人博客~
-    </p>
+<div class="header">
+  <div class="menu-btn">
+    <div class="menu"></div>
   </div>
-
-
-  <div class="content whisper-content">
-    <div class="cont">
-      <div class="whisper-list" id="list">
-        <div class="item-box">
-          <div class="item">
-            <div class="whisper-title">
-              <i class="layui-icon layui-icon-date"></i><span class="hour">12:25</span><span class="date">2018/06/08</span>
-            </div>
-            <p class="text-cont">
-              一直听说牛油果吃起来像肥皂、肥肉，虽然很难吃，但是价格却很贵，我还是想尝试一下。今天公司新到了新西兰牛油果，这是新西兰牛油果是第一次在中国上市，个头比普通牛油果大了一倍，被誉为“超牛果”。好奇心驱使我尝了一颗，第一次吃牛油果没有见识，切开牛油果费了好大劲，切成了这样。
-            </p>
-            <div class="img-box">
-              <img src="static/res/img/wy_img1.jpg">
-            </div>
-            <div class="op-list">
-              <p class="like"><i class="layui-icon layui-icon-praise"></i><span>1200</span></p> 
-              <p class="edit"><i class="layui-icon layui-icon-reply-fill"></i><span>1200</span></p>
-              <p class="off"><span>展开</span><i class="layui-icon layui-icon-down"></i></p>
-            </div>
-          </div>
-          <div class="review-version layui-hide">
-              <div class="form">
-                <img src="static/res/img/header2.png">
-                <form class="layui-form" action="">
-                  <div class="layui-form-item layui-form-text">
-                    <div class="layui-input-block">
-                      <textarea name="desc" class="layui-textarea"></textarea>
-                    </div>
-                  </div>
-                  <div class="layui-form-item">
-                    <div class="layui-input-block" style="text-align: right;">
-                      <button class="layui-btn definite">確定</button>
-                    </div>
-                  </div>
-                </form>
-              </div>
-              <div class="list-cont">
-                <div class="cont">
-                  <div class="img">
-                    <img src="static/res/img/header.png" alt="">
-                  </div>
-                  <div class="text">
-                    <p class="tit"><span class="name">吳亦凡</span><span class="data">2018/06/06</span></p>
-                    <p class="ct">敢问大师，师从何方？上古高人呐逐一地看完你的作品后，我的心久久 不能平静！这世间怎么可能还有如此精辟的作品？我不敢相信自己的眼睛。自从改革开放以后，我就以为再也不会有任何作品能打动我，没想到今天看到这个如此精妙绝伦的作品好厉害！</p>
-                  </div>
-                </div>
-                <div class="cont">
-                  <div class="img">
-                    <img src="static/res/img/header.png" alt="">
-                  </div>
-                  <div class="text">
-                    <p class="tit"><span class="name">吳亦凡</span><span class="data">2018/06/06</span></p>
-                    <p class="ct">敢问大师，师从何方？上古高人呐逐一地看完你的作品后，我的心久久 不能平静！这世间怎么可能还有如此精辟的作品？我不敢相信自己的眼睛。自从改革开放以后，我就以为再也不会有任何作品能打动我，没想到今天看到这个如此精妙绝伦的作品好厉害！</p>
-                  </div>
-                </div>
-                <div class="cont">
-                  <div class="img">
-                    <img src="static/res/img/header.png" alt="">
-                  </div>
-                  <div class="text">
-                    <p class="tit"><span class="name">吳亦凡</span><span class="data">2018/06/06</span></p>
-                    <p class="ct">敢问大师，师从何方？上古高人呐逐一地看完你的作品后，我的心久久 不能平静！这世间怎么可能还有如此精辟的作品？我不敢相信自己的眼睛。自从改革开放以后，我就以为再也不会有任何作品能打动我，没想到今天看到这个如此精妙绝伦的作品好厉害！</p>
-                  </div>
-                </div>
-              </div>
-          </div>
-        </div>
-
-
-        </div>
-      </div>
-      <div id="demo" style="text-align: center;"></div>
+  <h1 class="logo">
+    <a href="toindex">
+      <span>MYBLOG</span>
+      <img src="static/res/img/logo.png">
+    </a>
+  </h1>
+  <div class="nav">
+    <a href="toindex">文章</a>
+    <a href="towhisper"  class="active">微语</a>
+    <a href="toleacots">留言</a>
+    <a href="toalbum">相册</a>
+    <a href="toabout">关于</a>
+  </div>
+  <ul class="layui-nav header-down-nav">
+    <li class="layui-nav-item"><a href="toindex">文章</a></li>
+    <li class="layui-nav-item"><a href="towhisper"  class="active">微语</a></li>
+    <li class="layui-nav-item"><a href="toleacots">留言</a></li>
+    <li class="layui-nav-item"><a href="toalbum">相册</a></li>
+    <li class="layui-nav-item"><a href="toabout">关于</a></li>
+  </ul>
+  <p class="welcome-text">
+    欢迎来到<span class="name">smile liu</span>的私人博客~
+  </p>
+</div>
+<div class="content whisper-content">
+  <div class="cont">
+    <div class="whisper-list" id="list">
     </div>
   </div>
+  <div id="demo" style="text-align: center;"></div>
+</div>
 
-  <div class="footer-wrap">
-    <div class="footer w1000">
-      <h4 style="color: #3f2863;font-size: 20px">素材来源：</h4>
-      <div class="qrcode">
-        <img src="static/res/img/erweima.jpg">
-      </div>
-      <div class="practice-mode">
-        <img src="static/res/img/down_img.jpg">
-        <div class="text">
-          <h4 class="title">我的联系方式</h4>
-          <p>QQ<span class="WeChat">1057720671</span></p>
-          <p>邮箱<span class="email">smileliuliuliu@163.com</span></p>
-        </div>
+<div class="footer-wrap">
+  <div class="footer w1000">
+    <h4 style="color: #3f2863;font-size: 20px">素材来源：</h4>
+    <div class="qrcode">
+      <img src="static/res/img/erweima.jpg">
+    </div>
+    <div class="practice-mode">
+      <img src="static/res/img/down_img.jpg">
+      <div class="text">
+        <h4 class="title">我的联系方式</h4>
+        <p>QQ<span class="WeChat">1057720671</span></p>
+        <p>邮箱<span class="email">smileliuliuliu@163.com</span></p>
       </div>
     </div>
   </div>
-  <script type="text/javascript" src="static/res/layui/layui.js"></script>
-  <script type="text/javascript" src="static/res/js/util/jquery.js"></script>
-  <script type="text/javascript">
-   layui.config({
-      base: 'static/res/js/util/'
-    }).use(['flow','laypage','form','menu'],function(){
-      laypage = layui.laypage,form = layui.form,menu = layui.menu,flow = layui.flow;
-      menu.init();
-      menu.off();
-      menu.submit()
+</div>
+<script type="text/javascript" src="static/res/layui/layui.js"></script>
+<script type="text/javascript" src="static/res/js/util/jquery.js"></script>
+<script type="text/javascript">
+    layui.config({
+        base: 'static/res/js/util/'
+    }).use(['flow','laypage','form'],function(){
+        laypage = layui.laypage,form = layui.form,flow = layui.flow;
+
+        flow.load({
+            elem: '#list' //指定列表容器
+            ,isAuto:true
+            ,done: function(page, next){ //到达临界点（默认滚动触发），触发下一页
+                var lis = [];
+                $.ajax({
+                    type: 'post',
+                    url: '/selectDiary',
+                    data:{'page':page},
+                    success: function (data) {
+                        layui.each(data.datas, function(index, item){
+                            var imgs ='';
+                            if (item.dUrl) {
+                                var urls = item.dUrl.split(',');
+                                layui.each(urls,function (index,item) {
+                                    imgs += '<img style="width: 200px;height: 160px" layer-src="'+item+'" src="'+item+'">';
+                                })
+                            }
+                            var html = '<div class="item-box">\n' +
+                                '          <div class="item">\n' +
+                                '            <div class="whisper-title">\n' +
+                                '              <i class="layui-icon layui-icon-date"></i><span class="date">'+item.d_date+'</span>\n' +
+                                '            </div>\n' +
+                                '            <p class="text-cont">\n' +
+                                '              '+item.dContent+'\n' +
+                                '            </p>\n' +
+                                '            <div class="img-box" id="img'+index+'">\n' +
+                                ''+imgs+''+
+                                '            </div>\n' +
+                                '            <div class="op-list">\n' +
+                                '              <p class="like"><i class="layui-icon layui-icon-praise" id="'+item.id+'"></i><span>'+item.dLikenum+'</span></p> \n' +
+                                '              <p class="edit"><i class="layui-icon layui-icon-reply-fill"></i><span>1200</span></p>\n' +
+                                '              <p class="off"><span>展开</span><i class="layui-icon layui-icon-down"></i></p>\n' +
+                                '            </div>\n' +
+                                '          </div>\n' +
+                                '          <div class="review-version layui-hide">\n' +
+                                '              <div class="form">\n' +
+                                '                <img src="static/res/img/header2.png">\n' +
+                                '                <form class="layui-form" action="">\n' +
+                                '                  <div class="layui-form-item layui-form-text">\n' +
+                                '                    <div class="layui-input-block">\n' +
+                                '                      <textarea name="desc" class="layui-textarea"></textarea>\n' +
+                                '                    </div>\n' +
+                                '                  </div>\n' +
+                                '                  <div class="layui-form-item">\n' +
+                                '                    <div class="layui-input-block" style="text-align: right;">\n' +
+                                '                      <button class="layui-btn definite">確定</button>\n' +
+                                '                    </div>\n' +
+                                '                  </div>\n' +
+                                '                </form>\n' +
+                                '              </div>\n' +
+                                '              <div class="list-cont">\n' +
+                                '                <div class="cont">\n' +
+                                '                  <div class="img">\n' +
+                                '                    <img src="static/res/img/header.png" alt="">\n' +
+                                '                  </div>\n' +
+                                '                  <div class="text">\n' +
+                                '                    <p class="tit"><span class="name">吳亦凡</span><span class="data">2018/06/06</span></p>\n' +
+                                '                    <p class="ct">敢问大师，师从何方？上古高人呐逐一地看完你的作品后，我的心久久 不能平静！这世间怎么可能还有如此精辟的作品？我不敢相信自己的眼睛。自从改革开放以后，我就以为再也不会有任何作品能打动我，没想到今天看到这个如此精妙绝伦的作品好厉害！</p>\n' +
+                                '                  </div>\n' +
+                                '                </div>\n' +
+                                '                <div class="cont">\n' +
+                                '                  <div class="img">\n' +
+                                '                    <img src="static/res/img/header.png" alt="">\n' +
+                                '                  </div>\n' +
+                                '                  <div class="text">\n' +
+                                '                    <p class="tit"><span class="name">吳亦凡</span><span class="data">2018/06/06</span></p>\n' +
+                                '                    <p class="ct">敢问大师，师从何方？上古高人呐逐一地看完你的作品后，我的心久久 不能平静！这世间怎么可能还有如此精辟的作品？我不敢相信自己的眼睛。自从改革开放以后，我就以为再也不会有任何作品能打动我，没想到今天看到这个如此精妙绝伦的作品好厉害！</p>\n' +
+                                '                  </div>\n' +
+                                '                </div>\n' +
+                                '                <div class="cont">\n' +
+                                '                  <div class="img">\n' +
+                                '                    <img src="static/res/img/header.png" alt="">\n' +
+                                '                  </div>\n' +
+                                '                  <div class="text">\n' +
+                                '                    <p class="tit"><span class="name">吳亦凡</span><span class="data">2018/06/06</span></p>\n' +
+                                '                    <p class="ct">敢问大师，师从何方？上古高人呐逐一地看完你的作品后，我的心久久 不能平静！这世间怎么可能还有如此精辟的作品？我不敢相信自己的眼睛。自从改革开放以后，我就以为再也不会有任何作品能打动我，没想到今天看到这个如此精妙绝伦的作品好厉害！</p>\n' +
+                                '                  </div>\n' +
+                                '                </div>\n' +
+                                '              </div>\n' +
+                                '          </div>\n' +
+                                '        </div>';
 
 
+                            lis.push(html);
 
-       flow.load({
-           elem: '#list' //指定列表容器
-           ,isAuto:true
-           ,scrollElem: '#list'
-           ,done: function(page, next){ //到达临界点（默认滚动触发），触发下一页
-               var lis = [];
-               $.ajax({
-                   type: 'post',
-                   url: '/selectDiary',
-                   data:{'page':page},
-                   success: function (data) {
-                       layui.each(data.datas, function(index, item){
-                           var html = '<div class="item-box">\n' +
-                               '          <div class="item">\n' +
-                               '            <div class="whisper-title">\n' +
-                               '              <i class="layui-icon layui-icon-date"></i><span class="date">'+item.d_date+'</span>\n' +
-                               '            </div>\n' +
-                               '            <p class="text-cont">\n' +
-                               '              '+item.dContent+'\n' +
-                               '            </p>\n' +
-                               '            <div class="img-box">\n' +
-                               '              <img src="static/res/img/wy_img1.jpg">\n' +
-                               '            </div>\n' +
-                               '            <div class="op-list">\n' +
-                               '              <p class="like"><i class="layui-icon layui-icon-praise"></i><span>1200</span></p> \n' +
-                               '              <p class="edit"><i class="layui-icon layui-icon-reply-fill"></i><span>1200</span></p>\n' +
-                               '              <p class="off"><span>展开</span><i class="layui-icon layui-icon-down"></i></p>\n' +
-                               '            </div>\n' +
-                               '          </div>\n' +
-                               '          <div class="review-version layui-hide">\n' +
-                               '              <div class="form">\n' +
-                               '                <img src="static/res/img/header2.png">\n' +
-                               '                <form class="layui-form" action="">\n' +
-                               '                  <div class="layui-form-item layui-form-text">\n' +
-                               '                    <div class="layui-input-block">\n' +
-                               '                      <textarea name="desc" class="layui-textarea"></textarea>\n' +
-                               '                    </div>\n' +
-                               '                  </div>\n' +
-                               '                  <div class="layui-form-item">\n' +
-                               '                    <div class="layui-input-block" style="text-align: right;">\n' +
-                               '                      <button class="layui-btn definite">確定</button>\n' +
-                               '                    </div>\n' +
-                               '                  </div>\n' +
-                               '                </form>\n' +
-                               '              </div>\n' +
-                               '              <div class="list-cont">\n' +
-                               '                <div class="cont">\n' +
-                               '                  <div class="img">\n' +
-                               '                    <img src="static/res/img/header.png" alt="">\n' +
-                               '                  </div>\n' +
-                               '                  <div class="text">\n' +
-                               '                    <p class="tit"><span class="name">吳亦凡</span><span class="data">2018/06/06</span></p>\n' +
-                               '                    <p class="ct">敢问大师，师从何方？上古高人呐逐一地看完你的作品后，我的心久久 不能平静！这世间怎么可能还有如此精辟的作品？我不敢相信自己的眼睛。自从改革开放以后，我就以为再也不会有任何作品能打动我，没想到今天看到这个如此精妙绝伦的作品好厉害！</p>\n' +
-                               '                  </div>\n' +
-                               '                </div>\n' +
-                               '                <div class="cont">\n' +
-                               '                  <div class="img">\n' +
-                               '                    <img src="static/res/img/header.png" alt="">\n' +
-                               '                  </div>\n' +
-                               '                  <div class="text">\n' +
-                               '                    <p class="tit"><span class="name">吳亦凡</span><span class="data">2018/06/06</span></p>\n' +
-                               '                    <p class="ct">敢问大师，师从何方？上古高人呐逐一地看完你的作品后，我的心久久 不能平静！这世间怎么可能还有如此精辟的作品？我不敢相信自己的眼睛。自从改革开放以后，我就以为再也不会有任何作品能打动我，没想到今天看到这个如此精妙绝伦的作品好厉害！</p>\n' +
-                               '                  </div>\n' +
-                               '                </div>\n' +
-                               '                <div class="cont">\n' +
-                               '                  <div class="img">\n' +
-                               '                    <img src="static/res/img/header.png" alt="">\n' +
-                               '                  </div>\n' +
-                               '                  <div class="text">\n' +
-                               '                    <p class="tit"><span class="name">吳亦凡</span><span class="data">2018/06/06</span></p>\n' +
-                               '                    <p class="ct">敢问大师，师从何方？上古高人呐逐一地看完你的作品后，我的心久久 不能平静！这世间怎么可能还有如此精辟的作品？我不敢相信自己的眼睛。自从改革开放以后，我就以为再也不会有任何作品能打动我，没想到今天看到这个如此精妙绝伦的作品好厉害！</p>\n' +
-                               '                  </div>\n' +
-                               '                </div>\n' +
-                               '              </div>\n' +
-                               '          </div>\n' +
-                               '        </div>';
-                           lis.push(html);
-                       });
-                       next(lis.join(''), page < data.code/5);
-                   }
-               })
-           }
-       });
+                        });
+                        next(lis.join(''), page < data.code/5);
+
+                        layui.each(data.datas, function(index, item){
+                            layer.photos({
+                                photos: '#img'+index
+                                ,anim: 5 //0-6的选择，指定弹出图片动画类型，默认随机（请注意，3.0之前的版本用shift参数）
+                            });
+                        })
+
+                    }
+                })
+            }
+        });
+
+        $(document).on('click', '.off', function() {
+            var off = $(this).attr('off');
+            var chi = $(this).children('i');
+            var text = $(this).children('span');
+            var cont = $(this).parents('.item').siblings('.review-version');
+            if(off){
+                $(text).text('展开');
+                $(chi).attr('class','layui-icon layui-icon-down');
+                $(this).attr('off','');
+                $(cont).addClass('layui-hide');
+            }else{
+                $(text).text('收起');
+                $(chi).attr('class','layui-icon layui-icon-up')
+                $(this).attr('off','true')
+                $(cont).removeClass('layui-hide')
+            }
+        });
 
 
-   })
-  </script>
+        $(document).on('click','.op-list .like',function(){
+            var oSpan =  $(this).children('span');
+            var num = parseInt($(oSpan).text())
+            var off = $(this).attr('off')
+            var id = $(this).children('i').attr('id');
+            var me = $(this);
+            $.ajax({
+                type:'post',
+                url:'/updateLikeN',
+                data:{'off':off,'num':num,'id':id},
+                success:function (data) {
+                    if (data.code==200){
+                        if(off){
+                            me.removeClass('active');
+                            $(oSpan).text(num-1)
+                            me.attr('off','')
+                        }else{
+                            me.addClass('active');
+                            $(oSpan).text(num+1)
+                            me.attr('off','true')
+                        }
+                    }else {
+                        layer.msg(data.msg);
+                    }
+                }
+            });
+        })
+
+
+    })
+</script>
 </body>
 </html>

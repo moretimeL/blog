@@ -12,7 +12,7 @@ public class Article {
     private String aType;
     private String aCover;
     @DateTimeFormat(pattern="yyyy-MM-dd HH:mm:ss")
-    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss")
+    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss",timezone = "GMT+8")
     private Date aDate;
     private Integer aViews;
     private String aContent;

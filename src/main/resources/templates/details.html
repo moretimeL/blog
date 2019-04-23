@@ -132,7 +132,7 @@
                             data:{'limit':4,'curr':e.curr,'a_id':data.data.id},
                             success:function (datas) {
                                 var comment = $('#com');
-                                for (var i=0;i<datas.datas.length;i++){
+                                for (var i=datas.datas.length-1;i>=0;i--){
                                     var html =' <div class="cont">\n' +
                                         '                  <div class="img">\n' +
                                         '                    <img src="static/res/img/header.png" alt="">\n' +

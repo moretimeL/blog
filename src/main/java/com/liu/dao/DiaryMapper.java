@@ -1,6 +1,7 @@
 package com.liu.dao;
 
 import com.liu.entity.Diary;
+import org.apache.ibatis.annotations.Param;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
@@ -17,6 +18,8 @@ public interface DiaryMapper {
     Integer selectCount();
 
     int updateByPrimaryKey(Diary record);
+
+    int updateLikeN(@Param("off") String off,@Param("num") Integer num,@Param("id") Integer id);
 
 
 }

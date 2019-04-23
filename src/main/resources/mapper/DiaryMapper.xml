@@ -38,6 +38,18 @@
       d_likenum = #{dLikenum,jdbcType=INTEGER}
     where id = #{id,jdbcType=INTEGER}
   </update>
+  <update id="updateLikeN">
+    UPDATE diary
+    <trim prefix="set" suffixOverrides=",">
+      <if test="off == ''|| off == null">
+        d_likenum = #{num}+1,
+      </if>
+      <if test="off == 'true'">
+        d_likenum = #{num}-1,
+      </if>
+    </trim>
+    WHERE id = #{id}
+  </update>
   <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
     select id, d_content, d_url, d_likenum,d_date
     from diary
@@ -49,6 +61,8 @@
     order by d_date desc
         limit #{page},5
   </select>
+
+
 
   <select id="selectCount" resultType="integer">
     select count(*) from diary
