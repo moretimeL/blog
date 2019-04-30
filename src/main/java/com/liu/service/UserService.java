@@ -18,4 +18,6 @@ public interface UserService {
 
     Result uploadimg(MultipartFile file,String filename);
 
+    Result updataPwd(String newpwd,String oldpwd,HttpSession session);
+
 }

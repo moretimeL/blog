@@ -63,6 +63,11 @@
   </select>
 
 
+  <select id="selectDia" resultMap="BaseResultMap" >
+    select id, d_content, d_url, d_likenum,d_date
+    from diary
+        limit #{curr},#{limit}
+  </select>
 
   <select id="selectCount" resultType="integer">
     select count(*) from diary

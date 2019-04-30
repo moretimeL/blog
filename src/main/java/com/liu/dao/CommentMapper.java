@@ -22,4 +22,16 @@ public interface CommentMapper {
     int selectArtCountById(Integer id);
 
     List<Comment> selectArcComById(@Param("curr") Integer curr, @Param("limit") Integer limit, @Param("a_id")Integer a_id);
+
+    int selectDiCountById(Integer id);
+
+    List<Comment> selectDiaComById(@Param("curr") Integer curr, @Param("limit") Integer limit, @Param("d_id")Integer d_id);
+
+    Integer selecteComCount();
+
+    List<Comment> selectCom(@Param("curr") Integer curr, @Param("limit") Integer limit);
+
+    Integer deleteByAid(Integer id);
+
+    Integer deleteByDid(Integer id);
 }

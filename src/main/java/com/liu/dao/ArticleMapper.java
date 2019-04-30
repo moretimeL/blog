@@ -33,4 +33,9 @@ public interface ArticleMapper {
     Integer selectNext(Integer last_id);
 
     Integer selectLest(Integer next_id);
+
+    List<Article> selectAllByName(@Param("limit") Integer limit,@Param("curr") Integer curr,@Param("title") String title);
+
+    Integer selectCountByName(@Param("title") String title);
+
 }

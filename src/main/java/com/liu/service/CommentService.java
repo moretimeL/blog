@@ -15,4 +15,10 @@ public interface CommentService {
     Result insertToArt(Comment comment);
 
     Result selectArcComById(Integer curr, Integer limit,Integer a_id);
+
+    Result selectDiaComById(Integer curr, Integer limit,Integer d_id);
+
+    Result selectCom(Integer curr, Integer limit);
+
+    Result selecteComCount();
 }

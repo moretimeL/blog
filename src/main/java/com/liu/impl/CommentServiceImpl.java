@@ -41,4 +41,25 @@ public class CommentServiceImpl implements CommentService {
         result.setDatas(commentMapper.selectArcComById(limit*(curr-1),limit,a_id));
         return result;
     }
+
+    @Override
+    public Result selectDiaComById(Integer curr, Integer limit, Integer d_id) {
+        Result result = new Result();
+        result.setDatas(commentMapper.selectDiaComById(limit*(curr-1),limit,d_id));
+        return result;
+    }
+
+    @Override
+    public Result selectCom(Integer curr,Integer limit) {
+        Result result = new Result();
+        result.setDatas(commentMapper.selectCom(limit*(curr-1),limit));
+        return result;
+    }
+
+    @Override
+    public Result selecteComCount() {
+        Result result = new Result();
+        result.setData(commentMapper.selecteComCount());
+        return result;
+    }
 }

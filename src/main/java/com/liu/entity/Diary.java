@@ -13,6 +13,15 @@ public class Diary {
     private Integer dLikenum;
     @JsonFormat(pattern = "HH:mm:ss yyyy/MM/dd",timezone = "GMT+8")
     private Date d_date;
+    private Integer comNum;
+
+    public Integer getComNum() {
+        return comNum;
+    }
+
+    public void setComNum(Integer comNum) {
+        this.comNum = comNum;
+    }
 
     public Integer getId() {
         return id;
@@ -62,6 +71,7 @@ public class Diary {
                 ", dUrl='" + dUrl + '\'' +
                 ", dLikenum=" + dLikenum +
                 ", d_date=" + d_date +
+                ", comNum=" + comNum +
                 '}';
     }
 }

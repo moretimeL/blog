@@ -16,6 +16,15 @@
     delete from comment
     where id = #{id,jdbcType=INTEGER}
   </delete>
+  <delete id="deleteByAid">
+     delete from comment
+    where a_id = #{id,jdbcType=INTEGER}
+  </delete>
+
+  <delete id="deleteByDid">
+     delete from comment
+    where d_id = #{id,jdbcType=INTEGER}
+  </delete>
   <insert id="insert" parameterType="com.liu.entity.Comment" >
     insert into comment (id, c_ip, c_icon,
       c_date, d_id, a_id,
@@ -27,8 +36,8 @@
       )
   </insert>
   <insert id="insertToArticle" parameterType="com.liu.entity.Comment">
-    insert into comment ( c_ip, c_icon, a_id,c_type, c_content )
-    values ( #{cIp,jdbcType=VARCHAR}, #{cIcon,jdbcType=VARCHAR}, #{aId,jdbcType=INTEGER},
+    insert into comment ( c_ip, c_icon,d_id, a_id,c_type, c_content )
+    values ( #{cIp,jdbcType=VARCHAR}, #{cIcon,jdbcType=VARCHAR},#{dId,jdbcType=INTEGER}, #{aId,jdbcType=INTEGER},
       #{cType,jdbcType=CHAR},#{cContent,jdbcType=LONGVARCHAR}
       )
   </insert>
@@ -63,4 +72,27 @@
     order by c_date desc
     LIMIT #{curr},#{limit}
   </select>
+  <select id="selectDiCountById" resultType="java.lang.Integer">
+    select count(*) from comment where c_type = 1
+    and d_id = #{#id}
+  </select>
+  <select id="selectDiaComById" resultMap="BaseResultMap">
+ select * from comment where c_type = 1
+    and d_id = #{d_id}
+    order by c_date desc
+    LIMIT #{curr},#{limit}
+  </select>
+  <select id="selecteComCount" resultType="java.lang.Integer">
+    select count(*) from comment
+    where c_type = 3
+  </select>
+  <select id="selectCom" resultMap="BaseResultMap">
+    select id, c_ip, c_icon, c_date, d_id, a_id, c_type, c_toid, c_content
+    from comment
+    where c_type = 3
+    order by c_date desc
+    LIMIT #{curr},#{limit}
+  </select>
+
+
 </mapper>

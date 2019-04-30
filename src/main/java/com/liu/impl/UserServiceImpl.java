@@ -52,4 +52,25 @@ public class UserServiceImpl implements UserService {
         result.setData(img);
         return result;
     }
+
+    @Override
+    public Result updataPwd(String newpwd, String oldpwd, HttpSession session) {
+        Result result = new Result();
+        User user = (User) session.getAttribute("user");
+        if(user.getPassword().equals(oldpwd)){
+            user.setPassword(newpwd);
+            if(userMapper.updataPwd(user)==1){
+                result.setCode(200);
+                result.setMsg("修改成功！");
+            }else{
+                result.setCode(0);
+                result.setMsg("修改失败！");
+            }
+        }else{
+            result.setCode(1);
+            result.setMsg("您输入的密码有误！");
+        }
+
+        return result;
+    }
 }

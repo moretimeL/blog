@@ -6,6 +6,7 @@ public class Result {
     private String state;
     private Integer code;
     private String msg;
+    private Integer count;
     private Object data;
     private List<?> datas;
 
@@ -15,20 +16,13 @@ public class Result {
                 "state='" + state + '\'' +
                 ", code=" + code +
                 ", msg='" + msg + '\'' +
+                ", count=" + count +
                 ", data=" + data +
                 ", datas=" + datas +
                 '}';
     }
 
     public Result() {
-    }
-
-    public Result(String state, Integer code, String msg, Object data, List<?> datas) {
-        this.state = state;
-        this.code = code;
-        this.msg = msg;
-        this.data = data;
-        this.datas = datas;
     }
 
     public String getState() {
@@ -53,6 +47,14 @@ public class Result {
 
     public void setMsg(String msg) {
         this.msg = msg;
+    }
+
+    public Integer getCount() {
+        return count;
+    }
+
+    public void setCount(Integer count) {
+        this.count = count;
     }
 
     public Object getData() {

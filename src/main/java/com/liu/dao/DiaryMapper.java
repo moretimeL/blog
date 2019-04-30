@@ -21,5 +21,5 @@ public interface DiaryMapper {
 
     int updateLikeN(@Param("off") String off,@Param("num") Integer num,@Param("id") Integer id);
 
-
+    List<Diary> selectDia(@Param("limit") Integer limit,@Param("curr") Integer curr);
 }

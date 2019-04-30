@@ -29,8 +29,6 @@
       a_dec = #{aDec,jdbcType=VARCHAR},
       a_type = #{aType,jdbcType=CHAR},
       a_cover = #{aCover,jdbcType=VARCHAR},
-      a_date = #{aDate,jdbcType=TIMESTAMP},
-      a_views = #{aViews,jdbcType=INTEGER},
       a_content = #{aContent,jdbcType=LONGVARCHAR}
     where id = #{id,jdbcType=INTEGER}
   </update>
@@ -89,6 +87,24 @@
     insert into article(a_title, a_dec, a_type, a_cover, a_content)
     values (#{aTitle},#{aDec},#{aType},#{aCover},#{aContent})
   </insert>
+
+  <select id="selectAllByName" resultMap="BaseResultMap">
+    select id, a_title, a_dec, a_type, a_cover, a_date, a_views, a_content
+    from article
+    where 1=1
+    <if test="title != null and title != ''">
+      and  a_title LIKE CONCAT('%',#{title},'%')
+    </if>
+    LIMIT #{curr},#{limit}
+  </select>
+  <select id="selectCountByName" resultType="java.lang.Integer">
+    select count(*)
+    from article
+    where 1=1
+    <if test="title != null and title != ''">
+      and  a_title LIKE CONCAT('%',#{title},'%')
+    </if>
+  </select>
 
 
 

@@ -22,6 +22,7 @@
                     <a class="" href="javascript:;">日志管理</a>
                     <dl class="layui-nav-child">
                         <dd><a href="addarticle.html" target="iframe" data-text="编写日志"><span class="l-line"></span>编写日志</a></dd>
+                        <dd><a href="articlelist.html" target="iframe" data-text="日志列表"><span class="l-line"></span>日志列表</a></dd>
                     </dl>
 
                 </li>
@@ -29,15 +30,9 @@
                     <a class="" href="javascript:;">微语管理</a>
                     <dl class="layui-nav-child">
                         <dd><a href="addwhisper.html" target="iframe" data-text="编写微语"><span class="l-line"></span>编写微语</a></dd>
+                        <dd><a href="diarylist.html" target="iframe" data-text="微语列表"><span class="l-line"></span>微语列表</a></dd>
                     </dl>
 
-                </li>
-                <li class="layui-nav-item layui-nav-itemed">
-                    <a class="" href="javascript:;">用户管理</a>
-                    <dl class="layui-nav-child">
-                        <dd><a href="/addUser" target="iframe" data-url="addUser.html"  data-id='2' data-text="添加用户"><span class="l-line"></span>添加用户</a></dd>
-                        <dd><a href="/user" target="iframe" data-url="user.html"  data-id='2' data-text="用户列表"><span class="l-line"></span>用户列表</a></dd>
-                    </dl>
                 </li>
                 <li class="layui-nav-item layui-nav-itemed">
                     <a href="password_edit.html" target="iframe">修改密码</a>
@@ -74,6 +69,17 @@
     //JavaScript代码区域
     layui.use('element', function(){
         var element = layui.element;
+        var $ = layui.jquery;
+
+        $.ajax({
+            type:'get',
+            url:'/getSession',
+            success:function (data) {
+                if (data.code == 0){
+                    window.location.href = '/static/html/login.html';
+                }
+            }
+        });
     });
 </script>
 </body>

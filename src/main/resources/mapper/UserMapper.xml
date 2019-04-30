@@ -22,6 +22,7 @@
       password = #{password,jdbcType=VARCHAR}
     where id = #{id,jdbcType=INTEGER}
   </update>
+
   <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
     select id, username, password
     from user
@@ -38,4 +39,10 @@
     where username = #{username}
     and password = #{password}
   </select>
+
+  <update id="updataPwd" parameterType="com.liu.entity.User">
+    update user
+        set password = #{password}
+        where id=#{id}
+  </update>
 </mapper>

@@ -3,8 +3,11 @@ package com.liu.contoller;
 import com.liu.dao.DiaryMapper;
 import com.liu.entity.Diary;
 import com.liu.pojo.Result;
+import com.liu.pojo.Role;
+import com.liu.pojo.RolePermission;
 import com.liu.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.multipart.MultipartFile;
@@ -32,8 +35,14 @@ public class UserController {
     }
 
     @RequestMapping(value = "uploadimg")
-    public Result uploadimg(MultipartFile file){
+    public synchronized Result uploadimg(MultipartFile file){
         return userService.uploadimg(file,String.valueOf(System.currentTimeMillis())+".jpg");
+    }
+
+    @RolePermission(value = Role.ADMIN)
+    @PostMapping(value = "updataPwdById")
+    public Result updataPwdById(String oldpwd,String newpwd,HttpSession session){
+        return  userService.updataPwd(newpwd,oldpwd,session);
     }
 
 }

@@ -31,4 +31,12 @@ public interface ArticleService {
     Result selectNext(Integer last_id);
 
     Result selectLest(Integer next_id);
+
+    Result selectAllByName(Integer limit,Integer page,String title);
+
+    Result deleteById(Integer id);
+
+    Result selectById(Integer id);
+
+    Result updateById(Article article);
 }

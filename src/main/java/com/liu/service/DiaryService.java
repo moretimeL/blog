@@ -17,4 +17,7 @@ public interface DiaryService {
 
     Result updateLikeN(String off,Integer num,Integer id);
 
+    Result selectDiaByName(Integer limit,Integer page);
+
+    Result deleteDiaById(Integer id);
 }

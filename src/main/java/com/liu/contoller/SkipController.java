@@ -1,9 +1,12 @@
 package com.liu.contoller;
 
+import com.liu.pojo.Result;
 import com.liu.service.ArticleService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import javax.servlet.http.HttpSession;
 
@@ -33,4 +36,16 @@ public class SkipController {
     public String toLeacots(){ return "leacots"; }
     @RequestMapping("/towhisper")
     public String toWhisper(){ return "whisper"; }
+
+    @GetMapping("/getSession")
+    @ResponseBody
+    public Result getSession(HttpSession session){
+        Result result = new Result();
+        if (session.getAttribute("user")==null){
+            result.setCode(0);
+        }else {
+            result.setCode(1);
+        }
+        return result;
+    }
 }

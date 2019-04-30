@@ -18,4 +18,6 @@ public interface UserMapper {
     int updateByPrimaryKey(User record);
 
     User selectToLogin(@Param(value = "username")String username,@Param(value = "password")String password);
+
+    Integer updataPwd(User user);
 }

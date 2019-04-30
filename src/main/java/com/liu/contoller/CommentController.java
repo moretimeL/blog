@@ -7,6 +7,7 @@ import com.liu.utile.FileUtile;
 import com.liu.utile.IpUtile;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -32,6 +33,20 @@ public class CommentController {
     @PostMapping("selectArcComById")
     public Result selectArcComById(Integer curr,Integer limit,Integer a_id){
         return commentService.selectArcComById(curr,limit,a_id);
+    }
+
+    @PostMapping("selectDiaComById")
+    public Result selectDiaComById(Integer curr,Integer limit,Integer d_id){
+        return commentService.selectDiaComById(curr,limit,d_id);
+    }
+
+    @GetMapping("selecteComCount")
+    public Result selecteComCount(){
+        return commentService.selecteComCount();
+    }
+    @GetMapping("selectCom")
+    public Result selectCom(Integer limit,Integer curr){
+        return commentService.selectCom(curr,limit);
     }
 
 }

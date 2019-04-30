@@ -189,7 +189,8 @@
 
         form.on('submit(yes)', function(){
             var cContent = $("#context").val();
-
+            var num = $('#count').text();
+            var count = $('#count');
             if (cContent.replace(/\s+/g, "")!=''&&cContent!=null){
                 $.ajax({
                     type:'post',
@@ -209,6 +210,7 @@
                         if (data.code==200){
                             comment.prepend(html);
                             $("#context").val('');
+                            count.text(parseInt(num)+1);
                         }else{
                             layer.msg(data.msg)
                         }

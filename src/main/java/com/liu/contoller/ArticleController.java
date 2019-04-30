@@ -2,6 +2,8 @@ package com.liu.contoller;
 
 import com.liu.entity.Article;
 import com.liu.pojo.Result;
+import com.liu.pojo.Role;
+import com.liu.pojo.RolePermission;
 import com.liu.service.ArticleService;
 import com.liu.utile.IpUtile;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -24,6 +26,8 @@ import javax.servlet.http.HttpSession;
 public class ArticleController {
     @Autowired
     ArticleService articleService;
+
+
     @PostMapping("getArticle")
     public Result getArticle(Integer limit,Integer curr,String type,HttpServletRequest request){
         Result result = new Result();
@@ -43,10 +47,12 @@ public class ArticleController {
         return ip;
     }
 
+    @RolePermission(Role.ADMIN)
     @PostMapping(value = "addArticle")
     public Result addArticle(Article article){
         return articleService.AddArticle(article);
     }
+
 
     @PostMapping(value = "selectArticleById")
     public Result selectArticleById(HttpSession session){
@@ -62,4 +68,21 @@ public class ArticleController {
     public Result selectLest(Integer next_id){
         return articleService.selectLest(next_id);
     }
+
+
+    @RolePermission(Role.ADMIN)
+    @GetMapping("selectAllByName")
+    public  Result selectAllByName(String title,Integer limit,Integer page){return articleService.selectAllByName(limit, page, title);}
+
+    @RolePermission(Role.ADMIN)
+    @PostMapping("deleteById")
+    public Result deleteById(Integer id){return articleService.deleteById(id);}
+
+    @RolePermission(Role.ADMIN)
+    @GetMapping("selectById")
+    public Result selectById(Integer id){return articleService.selectById(id);}
+
+    @RolePermission(Role.ADMIN)
+    @PostMapping("updateById")
+    public Result updateById(Article article){return articleService.updateById(article);}
 }
