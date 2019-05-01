@@ -8,6 +8,7 @@ import com.liu.pojo.Result;
 import com.liu.service.DiaryService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
@@ -73,6 +74,7 @@ public class DiaryServiceImpl implements DiaryService {
     }
 
     @Override
+    @Transactional
     public Result deleteDiaById(Integer id) {
         Result result = new Result();
         commentMapper.deleteByDid(id);

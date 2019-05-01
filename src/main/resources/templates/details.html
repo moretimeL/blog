@@ -195,7 +195,7 @@
                 $.ajax({
                     type:'post',
                     url:'/insertToArt',
-                    data:{'aId':window.location.href.split('=')[1],'cContent':cContent,'cType':'2'},
+                    data:{'aid':window.location.href.split('=')[1],'cContent':cContent,'cType':'2'},
                     success:function (data) {
                         var comment = $('#com');
                         var html =' <div class="cont">\n' +

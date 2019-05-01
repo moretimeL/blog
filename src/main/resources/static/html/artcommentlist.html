@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title></title>
+    <link rel="stylesheet" href="../res/layui/css/layui.css" />
+</head>
+<body>
+<fieldset class="layui-elem-field layui-field-title">
+    <legend>评论列表</legend>
+</fieldset>
+
+<div class="layui-col-md11" style="margin-left: 4%;">
+    <div class="demoTable">
+        搜索所属日志ID：
+        <div class="layui-inline">
+            <input class="layui-input" name="id" id="demoReload" placeholder="请根据所属日志ID搜索" autocomplete="off">
+        </div>
+        <button class="layui-btn" id="check" data-type="reload" >搜索</button>
+    </div>
+    <table class="layui-hide" id="LAY_table_user" lay-filter="test"></table>
+</div>
+<input type="text" value="" id="u_id" hidden>
+<script type="text/html" id="barDemo">
+    <a class="layui-btn layui-btn-danger layui-btn-xs" id="del" lay-event="del">删除</a>
+</script>
+<script type="application/javascript" src="../res/layui/layui.js"></script>
+<script type="application/javascript">
+
+    layui.use('table', function(){
+        var table = layui.table;
+        var $ = layui.jquery;
+
+        //方法级渲染
+        table.render({
+            elem: '#LAY_table_user'
+            ,id:'old'
+            ,url: '/selectAllArtCom'
+            ,page: true
+            ,cols: [
+                [
+                    {field:'id', title: '留言ID', width:80, sort: true, fixed: true}
+                    ,{field:'cIp', title: '留言者ip'}
+                    ,{field:'cDate', title: '留言时间',sort:true}
+                    ,{field:'cContent', title: '留言内容',sort:true}
+                    ,{fixed:'right',title:'操作',toolbar:'#barDemo'}
+                ]
+            ]
+        });
+
+
+        table.on('tool(test)',function(obj){//test为table标签里面lay-filter的值
+            switch(obj.event) {
+                case 'del':
+                    var del = $('#del').text();
+                    layer.confirm('您确定要'+del+obj.data['id']+'号日志吗？', {
+                        btn: ['确定','取消'] //按钮
+                    }, function(){
+                        $.ajax({
+                            type:'post',
+                            url:'/deleteComById',
+                            data:{id:obj.data['id']},
+                            success:function (data) {
+                                if (data.code===200){
+                                    table.reload('old');
+                                    layer.msg(data.msg, {icon: 1});
+                                }else{
+                                    layer.msg(data.msg, {icon: 2});
+                                }
+                            }
+                        });
+                    }, function(){
+                        layer.close();
+                    });
+                    break;
+            }
+        });
+        $("#check").click(function (data) {
+            var title = $('#demoReload').val();
+            table.reload('old', {
+                where: {
+                    a_id: title
+                }
+                , url: '/selectAllArtCom'
+                , page: {
+                    curr: 1 //重新从第 1 页开始
+                },
+            });
+        });
+
+    });
+</script>
+
+</body>
+</html>

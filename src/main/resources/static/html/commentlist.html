@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title></title>
+    <link rel="stylesheet" href="../res/layui/css/layui.css" />
+</head>
+<body>
+<fieldset class="layui-elem-field layui-field-title">
+    <legend>评论列表</legend>
+</fieldset>
+
+<div class="layui-col-md11" style="margin-left: 4%;">
+    <table class="layui-hide" id="LAY_table_user" lay-filter="test"></table>
+</div>
+<input type="text" value="" id="u_id" hidden>
+<script type="text/html" id="barDemo">
+    <a class="layui-btn layui-btn-danger layui-btn-xs" id="del" lay-event="del">删除</a>
+</script>
+<script type="application/javascript" src="../res/layui/layui.js"></script>
+<script type="application/javascript">
+
+    layui.use('table', function(){
+        var table = layui.table;
+        var $ = layui.jquery;
+
+        //方法级渲染
+        table.render({
+            elem: '#LAY_table_user'
+            ,id:'old'
+            ,url: '/selectAllCom'
+            ,page: true
+            ,cols: [
+                [
+                    {field:'id', title: '留言ID', width:80, sort: true, fixed: true}
+                    ,{field:'cIp', title: '留言者ip'}
+                    ,{field:'cDate', title: '留言时间',sort:true}
+                    ,{field:'cContent', title: '留言内容',sort:true}
+                    ,{fixed:'right',title:'操作',toolbar:'#barDemo'}
+                ]
+            ]
+        });
+
+
+        table.on('tool(test)',function(obj){//test为table标签里面lay-filter的值
+            switch(obj.event) {
+                case 'del':
+                    var del = $('#del').text();
+                    layer.confirm('您确定要'+del+obj.data['id']+'号留言吗？', {
+                        btn: ['确定','取消'] //按钮
+                    }, function(){
+                        $.ajax({
+                            type:'post',
+                            url:'/deleteComById',
+                            data:{id:obj.data['id']},
+                            success:function (data) {
+                                if (data.code===200){
+                                    table.reload('old');
+                                    layer.msg(data.msg, {icon: 1});
+                                }else{
+                                    layer.msg(data.msg, {icon: 2});
+                                }
+                            }
+                        });
+                    }, function(){
+                        layer.close();
+                    });
+                    break;
+            }
+        });
+    });
+</script>
+
+</body>
+</html>

@@ -20,5 +20,13 @@ public interface CommentService {
 
     Result selectCom(Integer curr, Integer limit);
 
+    Result selectAllCom(Integer page, Integer limit);
+
     Result selecteComCount();
+
+    Result deleteByPrimaryKey(Integer id);
+
+    Result selectAllArtCom(Integer page,Integer limit,Integer a_id);
+
+    Result selectAllDiaCom(Integer page,Integer limit,Integer d_id);
 }

@@ -1,6 +1,8 @@
 package com.liu.contoller;
 
+import com.liu.entity.Article;
 import com.liu.entity.Comment;
+import com.liu.entity.Diary;
 import com.liu.pojo.Result;
 import com.liu.service.CommentService;
 import com.liu.utile.FileUtile;
@@ -25,8 +27,14 @@ public class CommentController {
     CommentService commentService;
 
     @PostMapping("insertToArt")
-    public Result insertToArt(HttpServletRequest request, Comment comment){
+    public Result insertToArt(HttpServletRequest request, Comment comment,Integer aid,Integer did){
         comment.setcIp(IpUtile.getIp(request));
+        Article article = new Article();
+        Diary diary = new Diary();
+        diary.setId(did);
+        article.setId(aid);
+        comment.setdId(diary);
+        comment.setaId(article);
         return commentService.insertToArt(comment);
     }
 
@@ -47,6 +55,24 @@ public class CommentController {
     @GetMapping("selectCom")
     public Result selectCom(Integer limit,Integer curr){
         return commentService.selectCom(curr,limit);
+    }
+
+    @GetMapping("selectAllCom")
+    public Result selectAllCom(Integer limit,Integer page){
+        return commentService.selectAllCom(page,limit);
+    }
+
+    @PostMapping("deleteComById")
+    public  Result deleteCommById(Integer id){return commentService.deleteByPrimaryKey(id);}
+
+    @GetMapping("selectAllArtCom")
+    public Result selectAllArtCom(Integer limit,Integer page,Integer a_id){
+        return commentService.selectAllArtCom(page,limit,a_id);
+    }
+
+    @GetMapping("selectAllDiaCom")
+    public Result selectAllDiaCom(Integer limit,Integer page,Integer d_id){
+        return commentService.selectAllDiaCom(page,limit,d_id);
     }
 
 }

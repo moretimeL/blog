@@ -50,7 +50,7 @@
     </trim>
     WHERE id = #{id}
   </update>
-  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap">
     select id, d_content, d_url, d_likenum,d_date
     from diary
     where id = #{id,jdbcType=INTEGER}

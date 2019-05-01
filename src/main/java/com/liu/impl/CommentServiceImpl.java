@@ -3,6 +3,8 @@ package com.liu.impl;
 import com.liu.dao.CommentMapper;
 import com.liu.entity.Comment;
 import com.liu.pojo.Result;
+import com.liu.pojo.Role;
+import com.liu.pojo.RolePermission;
 import com.liu.service.CommentService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -57,9 +59,52 @@ public class CommentServiceImpl implements CommentService {
     }
 
     @Override
+    public Result selectAllCom(Integer page, Integer limit) {
+        Result result = new Result();
+        result.setData(commentMapper.selectCom(limit*(page-1),limit));
+        result.setCount(commentMapper.selecteComCount());
+        result.setCode(0);
+        return result;
+    }
+
+    @Override
     public Result selecteComCount() {
         Result result = new Result();
         result.setData(commentMapper.selecteComCount());
         return result;
     }
+
+    @Override
+    @RolePermission(Role.ADMIN)
+    public Result deleteByPrimaryKey(Integer id) {
+        Result result = new Result();
+        if (commentMapper.deleteByPrimaryKey(id) == 1) {
+            result.setCode(200);
+            result.setMsg("操作成功!");
+        } else {
+            result.setCode(-1);
+            result.setMsg("操作失败!");
+        }
+        return result;
+    }
+
+    @Override
+    public Result selectAllArtCom(Integer page, Integer limit, Integer a_id) {
+        Result result = new Result();
+        result.setData(commentMapper.selectArcComById(limit*(page-1),limit,a_id));
+        result.setCount(commentMapper.selectArtCountById(a_id));
+        result.setCode(0);
+        return result;
+    }
+
+    @Override
+    public Result selectAllDiaCom(Integer page, Integer limit, Integer d_id) {
+        Result result = new Result();
+        result.setData(commentMapper.selectDiaComById(limit*(page-1),limit,d_id));
+        result.setCount(commentMapper.selectDiCountById(d_id));
+        result.setCode(0);
+        return result;
+    }
+
+
 }

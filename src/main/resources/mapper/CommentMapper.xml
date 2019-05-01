@@ -6,11 +6,15 @@
     <result column="c_ip" property="cIp" jdbcType="VARCHAR" />
     <result column="c_icon" property="cIcon" jdbcType="VARCHAR" />
     <result column="c_date" property="cDate" jdbcType="TIMESTAMP" />
-    <result column="d_id" property="dId" jdbcType="INTEGER" />
-    <result column="a_id" property="aId" jdbcType="INTEGER" />
     <result column="c_type" property="cType" jdbcType="CHAR" />
     <result column="c_toid" property="cToid" jdbcType="INTEGER" />
     <result column="c_content" property="cContent" jdbcType="LONGVARCHAR" />
+    <association property="dId" column="d_id" javaType="com.liu.entity.Diary" select="com.liu.dao.DiaryMapper.selectByPrimaryKey">
+      <id column="d_id" property="id" javaType="INTEGER"/>
+    </association>
+    <association property="aId" column="a_id" javaType="com.liu.entity.Article" select="com.liu.dao.ArticleMapper.selectByPrimaryKey">
+      <id column="a_id" property="id" javaType="INTEGER"/>
+    </association>
   </resultMap>
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
     delete from comment
@@ -31,13 +35,13 @@
       c_type, c_toid, c_content
       )
     values (#{id,jdbcType=INTEGER}, #{cIp,jdbcType=VARCHAR}, #{cIcon,jdbcType=VARCHAR}, 
-      #{cDate,jdbcType=TIMESTAMP}, #{dId,jdbcType=INTEGER}, #{aId,jdbcType=INTEGER}, 
+      #{cDate,jdbcType=TIMESTAMP}, #{dId.id,jdbcType=INTEGER}, #{aId.id,jdbcType=INTEGER},
       #{cType,jdbcType=CHAR}, #{cToid,jdbcType=INTEGER}, #{cContent,jdbcType=LONGVARCHAR}
       )
   </insert>
   <insert id="insertToArticle" parameterType="com.liu.entity.Comment">
     insert into comment ( c_ip, c_icon,d_id, a_id,c_type, c_content )
-    values ( #{cIp,jdbcType=VARCHAR}, #{cIcon,jdbcType=VARCHAR},#{dId,jdbcType=INTEGER}, #{aId,jdbcType=INTEGER},
+    values ( #{cIp,jdbcType=VARCHAR}, #{cIcon,jdbcType=VARCHAR},#{dId.id,jdbcType=INTEGER}, #{aId.id,jdbcType=INTEGER},
       #{cType,jdbcType=CHAR},#{cContent,jdbcType=LONGVARCHAR}
       )
   </insert>
@@ -46,8 +50,8 @@
     set c_ip = #{cIp,jdbcType=VARCHAR},
       c_icon = #{cIcon,jdbcType=VARCHAR},
       c_date = #{cDate,jdbcType=TIMESTAMP},
-      d_id = #{dId,jdbcType=INTEGER},
-      a_id = #{aId,jdbcType=INTEGER},
+      d_id = #{dId.id,jdbcType=INTEGER},
+      a_id = #{aId.id,jdbcType=INTEGER},
       c_type = #{cType,jdbcType=CHAR},
       c_toid = #{cToid,jdbcType=INTEGER},
       c_content = #{cContent,jdbcType=LONGVARCHAR}
@@ -64,21 +68,29 @@
   </select>
   <select id="selectArtCountById" resultType="java.lang.Integer">
     select count(*) from comment where c_type = 2
-    and a_id = #{#id}
+    <if test="a_id != null and a_id != ''">
+      and a_id = #{a_id}
+    </if>
   </select>
   <select id="selectArcComById" resultMap="BaseResultMap">
     select * from comment where c_type = 2
-    and a_id = #{a_id}
+    <if test="a_id != null and a_id != ''">
+      and a_id = #{a_id}
+    </if>
     order by c_date desc
     LIMIT #{curr},#{limit}
   </select>
   <select id="selectDiCountById" resultType="java.lang.Integer">
     select count(*) from comment where c_type = 1
-    and d_id = #{#id}
+    <if test="d_id != null and d_id != ''">
+      and d_id = #{d_id}
+    </if>
   </select>
   <select id="selectDiaComById" resultMap="BaseResultMap">
  select * from comment where c_type = 1
-    and d_id = #{d_id}
+    <if test="d_id != null and d_id != ''">
+      and d_id = #{d_id}
+    </if>
     order by c_date desc
     LIMIT #{curr},#{limit}
   </select>

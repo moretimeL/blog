@@ -12,11 +12,26 @@ public class Comment {
     @DateTimeFormat(pattern="yyyy-MM-dd HH:mm:ss")
     @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss",timezone = "Asia/Shanghai")
     private Date cDate;
-    private Integer dId;
-    private Integer aId;
+    private Diary dId;
+    private Article aId;
     private String cType;
     private Integer cToid;
     private String cContent;
+
+    @Override
+    public String toString() {
+        return "Comment{" +
+                "id=" + id +
+                ", cIp='" + cIp + '\'' +
+                ", cIcon='" + cIcon + '\'' +
+                ", cDate=" + cDate +
+                ", dId=" + dId +
+                ", aId=" + aId +
+                ", cType='" + cType + '\'' +
+                ", cToid=" + cToid +
+                ", cContent='" + cContent + '\'' +
+                '}';
+    }
 
     public Integer getId() {
         return id;
@@ -50,19 +65,19 @@ public class Comment {
         this.cDate = cDate;
     }
 
-    public Integer getdId() {
+    public Diary getdId() {
         return dId;
     }
 
-    public void setdId(Integer dId) {
+    public void setdId(Diary dId) {
         this.dId = dId;
     }
 
-    public Integer getaId() {
+    public Article getaId() {
         return aId;
     }
 
-    public void setaId(Integer aId) {
+    public void setaId(Article aId) {
         this.aId = aId;
     }
 
@@ -88,20 +103,5 @@ public class Comment {
 
     public void setcContent(String cContent) {
         this.cContent = cContent;
-    }
-
-    @Override
-    public String toString() {
-        return "Comment{" +
-                "id=" + id +
-                ", cIp='" + cIp + '\'' +
-                ", cIcon='" + cIcon + '\'' +
-                ", cDate=" + cDate +
-                ", dId=" + dId +
-                ", aId=" + aId +
-                ", cType='" + cType + '\'' +
-                ", cToid=" + cToid +
-                ", cContent='" + cContent + '\'' +
-                '}';
     }
 }
